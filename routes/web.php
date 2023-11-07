@@ -19,6 +19,7 @@ use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserVendorReqeustController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\Frontend\ComparisonController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -95,8 +96,16 @@ Route::get('blog', [BlogController::class, 'blog'])->name('blog');
 Route::get('show-product-modal/{id}', [HomeController::class, 'ShowProductModal'])->name('show-product-modal');
 
 
+//** Comparison Route */
+// Route::get('/compare', 'ComparisonController@index')->name('comparison.index');
+// Route::post('/compare/add/{product}', 'ComparisonController@add')->name('comparison.add');
+// Route::post('/compare/remove/{product}', 'ComparisonController@remove')->name('comparison.remove');
+// Route::post('/compare/compare', 'ComparisonController@compare')->name('comparison.compare');
 
-
+Route::get('compare', [ComparisonController::class, 'index'])->name('comparison.index');
+Route::post('compare/add-product', [ComparisonController::class, 'addToCompareList'])->name('comparison.store');
+Route::get('compare/remove-product/{id}', [ComparisonController::class, 'destory'])->name('comparison.destory');
+Route::get('compare/compare', [ComparisonController::class, 'compare'])->name('comparison.compare');
 
 
 

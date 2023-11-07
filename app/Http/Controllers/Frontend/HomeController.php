@@ -23,6 +23,11 @@ class HomeController extends Controller
 {
     public function index()
     {
+        // // Create a comparisonToken and store it in a cookie for 1 day
+        // $comparisonToken = md5(uniqid(rand(), true));
+        // setcookie('comparison_token', $comparisonToken, time() + (86400 * 30), "/");
+        // dd($comparisonToken);
+        
         $sliders = Cache::rememberForever('sliders', function(){
             return Slider::where('status', 1)->orderBy('serial', 'asc')->get();
         });

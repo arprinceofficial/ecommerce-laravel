@@ -305,6 +305,15 @@ header {
   padding: 19px 0px;
   height: 90px;
   border-bottom: 1px solid #fff;
+  z-index: 1111 !important;
+}
+.exzoom_img_box,
+.exzoom_img_ul_outer,
+.exzoom_img_ul,
+.exzoom_img_ul li,
+.exzoom_img_ul li img
+{
+  /* width: 100% !important; */
 }
 
 .wsus__header_logo {
@@ -870,7 +879,7 @@ header {
   width: 100%;
   left: 0px;
   top: 0;
-  z-index: 999;
+  z-index: 1111;
   animation: menu_animate 1s;
   /* background: #0b2c3d; */
   height: 50px;
@@ -7242,7 +7251,7 @@ WISHLIST PAGE START
 }
 
 .wsus__dash_pro_img input {
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   background: #6fbcfb85;

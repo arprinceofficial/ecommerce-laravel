@@ -146,6 +146,47 @@
                 }
             })
         })
+        
+        // getCookie
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(";");
+
+            for(let i = 0; i < cookieArr.length; i++) {
+                let cookiePair = cookieArr[i].split("=");
+
+                if(name == cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+
+            return null;
+        }
+        // add product to compare
+        $('.add_to_compare').on('click', function(e){
+            e.preventDefault();
+            let id = $(this).data('id');
+
+            // get comparison_token value from cookie
+            let comparison_token = getCookie('comparison_token');
+            console.log(comparison_token, id);
+            $.ajax({
+                method: 'POST',
+                // url: "{{ route('comparison.store', ':id') }}".replace(':id', id),
+                url: "{{route('comparison.store')}}",
+                data: {product_id:id, comparison_token:comparison_token},
+                success:function(data){
+                    if(data.status === 'success'){
+                        $('#compare_count').text(data.count)
+                        toastr.success(data.message);
+                    }else if(data.status === 'error'){
+                        toastr.error(data.message);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            })
+        })
 
         // newsletter
         $('#newsletter').on('submit', function(e){
