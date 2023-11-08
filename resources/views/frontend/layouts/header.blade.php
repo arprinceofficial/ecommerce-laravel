@@ -34,6 +34,12 @@
                     </div>
                     <ul class="wsus__icon_area">
                         <li>
+                            <a class="wsus__cart_icon">
+                                <i class="fal fa-shopping-bag"></i>
+                                <span id="compare_count">{{ count(session('productComparison', [])) }}</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('user.wishlist.index') }}">
                                 <i class="fal fa-heart"></i>
                                 <span id="wishlist_count">

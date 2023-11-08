@@ -176,6 +176,7 @@
                 data: {product_id:id, comparison_token:comparison_token},
                 success:function(data){
                     if(data.status === 'success'){
+                        getComparisonCount()
                         $('#compare_count').text(data.count)
                         toastr.success(data.message);
                     }else if(data.status === 'error'){
@@ -188,6 +189,20 @@
             })
         })
 
+        function getComparisonCount() {
+            let comparison_token = getCookie('comparison_token');
+            $.ajax({
+                method: 'GET',
+                url: "{{ route('comparison.count') }}",
+                data: {comparison_token:'01f2f1398e8d428dc6a0cccc34f9ab3d'},
+                success: function(data) {
+                    $('#compare_count').text(data);
+                },
+                error: function(data) {
+
+                }
+            })
+        }
         // newsletter
         $('#newsletter').on('submit', function(e){
             e.preventDefault();

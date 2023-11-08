@@ -31,5 +31,7 @@ class ComparisonTokenServiceProvider extends ServiceProvider
             $comparisonToken = md5(uniqid(rand(), true));
             setcookie('comparison_token', $comparisonToken, time() + (86400 * 30), "/");
         }
-    }
+        // store comparisonToken in session
+        session()->put('comparison_token', $comparisonToken);
+        session()->put('productComparison', []);    }
 }

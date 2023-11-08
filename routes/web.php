@@ -104,8 +104,10 @@ Route::get('show-product-modal/{id}', [HomeController::class, 'ShowProductModal'
 
 Route::get('compare', [ComparisonController::class, 'index'])->name('comparison.index');
 Route::post('compare/add-product', [ComparisonController::class, 'addToCompareList'])->name('comparison.store');
+Route::get('compare/get-count', [ComparisonController::class, 'getComparisonCount'])->name('comparison.count');
 Route::get('compare/remove-product/{id}', [ComparisonController::class, 'destory'])->name('comparison.destory');
 Route::get('compare/compare', [ComparisonController::class, 'compare'])->name('comparison.compare');
+Route::get('compare/data', [ComparisonController::class, 'getComparisonList'])->name('comparison.getComparisonList');
 
 
 
